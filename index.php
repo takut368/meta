@@ -3,7 +3,7 @@ session_start();
 
 $correct_password_hash = '$2y$10$MtrHoIZWNVr/3Qd8GHkq7ui5dSO8WWFegqvRE7HcvAVTUPy1OnX4.';
 
-if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true && isset($_GET['regi'])) {
+if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
     header('Location: directory.php');
     exit;
 }
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (password_verify($password, $correct_password_hash)) {
         $_SESSION['authenticated'] = true;
-        header('Location: index.php');
+        header('Location: directory.php');
         exit;
     } else {
         $error = 'パスワードが間違っています。';
